@@ -51,16 +51,17 @@ class _UpdateDataState extends State<UpdateData> {
       var valid = formkey.currentState!.validate();
       if (valid) {
         formkey.currentState!.save();
+        try {
+          setState(() {
+            isSaving = true;
+          });
         final updatedinfo = {
           'StudentName': name,
           'CollegeName': college,
           'Age': age,
           'Marks': marks,
         };
-        try {
-          setState(() {
-            isSaving = true;
-          });
+
           DocumentReference reference = await FirebaseFirestore.instance
               .collection('Student_info')
               .doc(docId);
@@ -71,6 +72,7 @@ class _UpdateDataState extends State<UpdateData> {
           agectrl.clear();
           marksctrl.clear();
           collegectrl.clear();
+
         } catch (error) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text('$error'.toString())));
@@ -79,6 +81,7 @@ class _UpdateDataState extends State<UpdateData> {
       setState(() {
         isSaving = false;
       });
+      Navigator.of(context).pop();
     }
 
     return Scaffold(
@@ -173,7 +176,7 @@ class _UpdateDataState extends State<UpdateData> {
                     width: double.infinity,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigoAccent,
+                            backgroundColor: Colors.blue,
                             foregroundColor: Colors.black),
                         onPressed: () {
                           update();

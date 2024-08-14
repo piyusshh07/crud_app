@@ -32,7 +32,7 @@ class Listitem extends StatelessWidget {
       ),
       subtitle: Text(College),
       trailing:
-               Text(Marks.toString(), style: TextStyle(fontSize: 20,color: Colors.green)));
+               Text(Marks.toString(), style: const TextStyle(fontSize: 20,color: Colors.green)));
 
   }
 }

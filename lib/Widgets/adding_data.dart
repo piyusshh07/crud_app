@@ -136,7 +136,7 @@ class _AddingdataState extends State<AddingData> {
                     width: double.infinity,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.indigoAccent,
+                            backgroundColor: Colors.blue,
                             foregroundColor: Colors.black),
                         onPressed: () {
                           Submit();
